@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
@@ -18,8 +18,23 @@ const useLocalStorage = (key, initialValue) => {
   return [storedValue, setValue];
 };
 
+const useDarkMode = (key, initialValue) => {
+  const [dark, setDark] = useLocalStorage(key, initialValue);
+
+  useEffect(() => {
+    if (dark) {
+      document.querySelector('body').classList.add('dark-mode');
+    } else {
+      document.querySelector('body').classList.remove('dark-mode');
+    }
+  }, [dark])
+  return [dark, setDark]
+}
+
+
+
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useDarkMode('isDark', true);
   const toggleMode = e => {
     e.preventDefault();
     setDarkMode(!darkMode);
