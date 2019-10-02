@@ -256,4 +256,7 @@ text-align: left;
   .recharts-cartesian-axis-tick text{
     fill: white;
   }
+  .recharts-line path {
+    stroke: orange;
+  }
 }
