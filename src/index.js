@@ -35,7 +35,11 @@ const App = () => {
     <div className="App">
       <Navbar />
       <Route exact path='/' render={() => <Charts coinData={coinData} />} />
-      <Route exact path='/bitcoin' render={() => <Coin bitCoinData={bitCoinData} />} />
+      {
+        coinData.map(coin => {
+          return <Route path={`/${coin.id}`} render={() => <Coin coinData={coin}/>}/>
+        })
+      }
     </div>
     </Router>
   );
