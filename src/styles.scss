@@ -250,4 +250,10 @@ text-align: left;
     background-color: #1F2022;
     border: none;
   }
+  .recharts-tooltip-label{
+    color:black;
+  }
+  .recharts-cartesian-axis-tick text{
+    fill: white;
+  }
 }
